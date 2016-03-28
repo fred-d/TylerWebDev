@@ -10,7 +10,7 @@
     <meta name="description" content="Tyler Web Dev">
 
     <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Ubuntu:400,300,500|Lato:400,300' type='text/css'>
-    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/css/main.css">
 </head>
 
 <body>

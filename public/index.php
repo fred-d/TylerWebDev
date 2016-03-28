@@ -9,7 +9,7 @@ use Slim\Http\Request;
 use Slim\Http\Response;
 use TylerWebDev\TylerWebDev;
 
-require __DIR__ . '/bootstrap.php';
+require __DIR__ . '/../bootstrap.php';
 
 $app = new \Slim\App(\TylerWebDev\TylerWebDev::$container);
 

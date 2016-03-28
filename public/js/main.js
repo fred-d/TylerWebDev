@@ -863,7 +863,7 @@ var _helpersRestrict_to_pathJs2 = _interopRequireDefault(_helpersRestrict_to_pat
      * Create the Members List
      * =========================================================================
      */
-    fetch('https://meetup.tylerwebdev.io/members').then(function (response) {
+    fetch('/members').then(function (response) {
       return response.json();
     }).then(generateMemberList);
   })();

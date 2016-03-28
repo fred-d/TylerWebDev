@@ -49,7 +49,7 @@ restrict_to_path('/', () => {
      * Create the Members List
      * =========================================================================
      */
-    fetch('https://meetup.tylerwebdev.io/members')
+    fetch('/members')
       .then(function(response) { return response.json(); }).then(generateMemberList);
   })();
 

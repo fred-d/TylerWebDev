@@ -17,7 +17,7 @@
     composer: command=install working_dir=/home/deploy/twd/ansible_release no_dev=yes
 
   - name: "Ensure deploy user owns files"
-    file: path=/home/deploy/staging_files owner=www-data group=www-data recurse=yes state=directory mode=0777
+    file: path=/home/deploy owner=www-data group=www-data recurse=yes state=directory mode=0777
 
   - name: "symlink ansible deployment to current"
     file: src=/home/deploy/twd/ansible_release dest=/home/deploy/twd/current state=link

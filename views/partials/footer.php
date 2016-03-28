@@ -33,7 +33,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/plugins/CSSPlugin.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/1.18.0/TimelineLite.min.js"></script>
 <script src="https://cdn.jsdelivr.net/svginjector/1.1.3/svg-injector.min.js"></script>
-<script src="/public/js/main.js"></script>
+<script src="/js/main.js"></script>
 <script>
     (function() {
         var timeline = new TimelineLite();
