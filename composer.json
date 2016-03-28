@@ -1,0 +1,19 @@
+{
+    "require": {
+        "slim/slim": "^3.0",
+        "guzzlehttp/guzzle": "~6.0",
+        "predis/predis": "^1.0",
+        "nesbot/carbon": "^1.20",
+        "slim/php-view": "^2.1",
+        "illuminate/validation": "^5.1",
+        "illuminate/database": "^5.2"
+    },
+    "require-dev": {
+      "phpunit/phpunit": "4.8.*"
+    },
+    "autoload": {
+      "psr-4": {
+        "TylerWebDev\\": "src/"
+      }
+    }
+}

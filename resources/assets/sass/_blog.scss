@@ -1,0 +1,77 @@
+.blog-post {
+    h3 {
+        font-weight: lighter;
+        font-size: 24px;
+        margin-bottom: 16px;
+    }
+    
+    ul {
+        list-style: initial;
+        margin-left: 32px;
+    }
+    
+    ul li a {
+        text-decoration: none;
+        line-height: 1.75;
+        font-family: "Lato", sans-serif;
+        font-weight: 300;
+    }
+}
+
+.blog-roll {
+    text-align: left;
+    
+    li {
+        margin-bottom: 16px;
+    }
+    
+    a {
+        text-decoration: none;
+        line-height: 1.75;
+        color: #333;
+    }
+    
+    a:hover {
+        strong {
+            color: #409DB7;
+        }
+    }
+    
+    strong {
+        display: block;
+        font-size: 24px;
+        font-weight: lighter;
+        color: #24559F;
+    }
+    
+    summary, .author {
+        font-size: 13px;
+        margin-left: 24px;
+    }
+    
+    .author {
+        display: block;
+        font-style: italic;
+    }
+    
+    .categories {
+        list-style: none;
+        margin-left: 24px;
+        margin-top: 6px;
+        
+        li {
+            display: inline-block;
+            font-size: 12px;
+            color: #FFF;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+        
+        $colors: (#24559F, #2B76AC, #409DB7, #63BEB6, #94D1B0);
+        @for $i from 1 through length($colors) {
+            li:nth-child(#{length($colors)}n+#{$i}) {
+                background-color: nth($colors, $i);
+            }
+        }
+    }
+}

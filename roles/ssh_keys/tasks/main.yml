@@ -1,0 +1,27 @@
+---
+# tasks file for roles/ssh_keys
+  # Private ssh setup
+  - name: "install private ssh key for root, allows github access/deploys"
+    copyv: src="id_rsa" dest="/home/deploy/.ssh/id_rsa" mode=0600
+
+  - name: "install public ssh key for root, allows github access/deploys"
+    template: src="id_rsa.pub" dest="/home/deploy/.ssh/id_rsa.pub" mode=0600
+
+  - name: "ensure .ssh directory for deploy user"
+    file: path=/home/deploy/.ssh owner=deploy state=directory
+
+  - name: "install private ssh key for deploy, allows github access/deploys"
+    copyv: src="id_rsa" dest="/home/deploy/.ssh/id_rsa" mode=0600
+
+  - name: "install public ssh key for deploy, allows github access/deploys"
+    template: src="id_rsa.pub" dest="/home/deploy/.ssh/id_rsa.pub" mode=0600
+
+  # Public ssh keys for server
+  - name: Ensure logan's key is on server
+    authorized_key: user=deploy key="{{ lookup('file', 'logan.pub') }}"
+
+  - name: Ensure joseph's key is on server
+    authorized_key: user=deploy key="{{ lookup('file', 'joseph.pub') }}"
+
+  - name: Ensure logan's key is on server for deploy user
+    authorized_key: user=deploy key="{{ lookup('file', 'logan.pub') }}"

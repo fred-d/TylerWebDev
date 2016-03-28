@@ -1,0 +1,12 @@
+---
+# tasks file for users
+
+- user: name=deploy comment="Deploy User" shell="/bin/bash" groups="sudo"
+
+- name: Add configured user accounts to passwordless sudoers.
+  lineinfile:
+    dest: /etc/sudoers
+    regexp: '^deploy'
+    line: 'deploy ALL=(ALL) NOPASSWD: ALL'
+    state: present
+    validate: 'visudo -cf %s'

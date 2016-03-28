@@ -1,0 +1,4 @@
+---
+# tasks file for roles/redis
+  - name: setup redis
+    apt: name=redis-server state=latest

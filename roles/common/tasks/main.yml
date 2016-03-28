@@ -1,0 +1,16 @@
+---
+# tasks file for roles/common
+  - name: build-essential
+    apt: name=build-essential state=latest
+
+  - name: ensure packages are up to date
+    apt: upgrade=yes
+
+  - name: Ensure repositories cache up to date
+    apt: update_cache=yes
+
+  - name: Ensure git is installed
+    apt: name=git state=latest
+
+  - name: Ensure vim is installed
+    apt: name=vim state=latest

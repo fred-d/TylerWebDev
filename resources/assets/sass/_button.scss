@@ -1,0 +1,38 @@
+@import "variables";
+
+$button-hover: lighten($waikawa-gray, 10%);
+$disabled-button: lighten($waikawa-gray, 30%);
+
+.button {
+    display: inline-block;
+    font-weight: 400;
+    font-size: 18px;
+    color: $white;
+    background: $waikawa-gray;
+    background: linear-gradient(to bottom, lighten($waikawa-gray, 2) 50%, $waikawa-gray 50%, $waikawa-gray 51%);
+    text-decoration: none;
+    padding: 16px 64px;
+    cursor: pointer;
+    
+    &:hover {
+        background: $button-hover;
+        background: linear-gradient(to bottom, lighten($button-hover, 2) 50%, $button-hover 50%, $button-hover 51%);
+    }
+    
+    &[disabled] {
+        cursor: default;
+        background: $disabled-button;
+        background: linear-gradient(to bottom, lighten($disabled-button, 2) 50%, $disabled-button 50%, $disabled-button 51%);
+    }
+    
+    &.small {
+        padding: 8px 16px;
+        font-size: 12px;
+        font-weight: lighter;
+        margin-right: 8px;
+        
+        &:last-child {
+            margin-right: 0;
+        }
+    }
+}

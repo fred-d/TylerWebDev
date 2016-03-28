@@ -1,0 +1,20 @@
+---
+# tasks file for roles/nginx
+- name: Add Nginx PPA
+  apt_repository:
+    repo: "ppa:nginx/development"
+    update_cache: yes
+    state: present
+
+- name: Ensure nginx is latest
+  apt: name=nginx state=latest
+- name: Ensure nginx-extras
+  apt: name=nginx-extras state=latest
+
+- name: copy nginx.conf, inludes ssl setup
+  template:
+    src="nginx.conf"
+    dest="/etc/nginx/nginx.conf"
+  notify:
+    - restart nginx
+

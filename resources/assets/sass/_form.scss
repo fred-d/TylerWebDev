@@ -1,0 +1,134 @@
+$light-gray: #F6F5F1;
+
+form {
+    label {
+        position: relative;
+        display: block;
+        font-family: "Lato", sans-serif;
+        font-weight: lighter;
+        line-height: 2.5;
+    }
+    
+    input[type='text'], textarea {
+        position: relative;
+        width: 100%;
+        background-color: $light-gray;
+        border-radius: 2px;
+        border: 1px solid darken($light-gray, 2.5%);
+        font-size: 14px;
+        font-weight: lighter;
+        font-family: "Lato";
+        margin-bottom: 12px;
+        padding: 8px 12px;
+        resize: vertical;
+    }
+    
+    .button.submit {
+        float: right;
+    }
+}
+
+.form-with-progress {    
+    .progress {
+        margin: 0 auto 32px auto;
+    }
+    
+    form {
+        margin-bottom: 16px;
+    }
+}
+
+$step-dim: 64px;
+$inner-offset: 4px;
+$border-width: 1px;
+
+.progress {
+    align-self: stretch;
+    display: flex;
+    justify-content: space-between;
+    max-width: 320px;
+    counter-reset: step;
+    position: relative;
+    
+    &:after {
+        display: block;
+        content: " ";
+        position: absolute;
+        top: $step-dim / 2;
+        height: $border-width;
+        background-color: #CCC;
+        left: 0;
+        width: 100%;
+        z-index: 0;
+    }
+    
+    li {
+        counter-increment: step;
+        position: relative;
+        content: " ";
+        display: block;
+        width: $step-dim;
+        height: $step-dim;
+        border-radius: 100%;
+        background-color: #FFF;
+        border: $border-width solid #CCC;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+        cursor: pointer;
+        
+        &:before {
+            display: block;
+            content: counter(step);
+            font-size: 12px;
+            font-weight: lighter;
+            font-family: "Lato", sans-serif;
+            z-index: 3;
+        }
+        
+        &:after {
+            position: absolute;
+            top: $inner-offset;
+            left: $inner-offset;
+            content: " ";
+            width: $step-dim - 2 * ($inner-offset + $border-width);
+            height: $step-dim - 2 * ($inner-offset + $border-width);
+            background-color: #FFF;
+            transition: 0.25s background-color ease-in-out;
+            border-radius: 100%;
+            z-index: 2;
+        }
+    }
+    
+    li.active {
+        &:before {
+            color: #FFF;
+        }
+
+        &:after {
+            background-color: $waikawa-gray;
+        }
+    }
+    
+    li.error {
+        border-color: rgb(193, 79, 59);
+        
+        &:before {
+            content: "!";
+            color: rgb(193, 79, 59);
+            font-weight: bold;
+        }
+    }
+    
+    li.active.error {
+        &:before {
+            color: #FFF;
+        }
+        
+        &:after {
+            background-color: rgb(193, 79, 59);
+        }
+    }
+}

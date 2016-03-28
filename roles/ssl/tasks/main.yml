@@ -1,0 +1,10 @@
+---
+# tasks file for roles/ssl
+  - name: "install ssl key"
+    copyv: src="cert.key" dest="/home/deploy/cert.key" mode=0600
+
+  - name: "install ssl pem"
+    copyv: src="cert.pem" dest="/home/deploy/cert.pem" mode=0600
+
+  - name: "install dhparams pem"
+    copyv: src="dhparams.pem" dest="/home/deploy/dhparams.pem" mode=0600

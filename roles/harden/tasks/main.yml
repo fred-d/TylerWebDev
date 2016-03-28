@@ -1,0 +1,22 @@
+---
+# tasks file for roles/harden
+  - name: Ensure firewall is latest
+    apt: name=ufw state=latest
+
+  - name: Ensure fail2ban is latest
+    apt: name=fail2ban state=latest
+
+  - name: Setup ufw with deny all
+    ufw: state=enabled policy=deny
+
+  - name: Allow tcp ports
+    ufw: rule=allow port={{ item }} proto=tcp
+    with_items: tcp_open
+
+  - name: Allow password authentication (handy networks needs this)
+    lineinfile: dest=/etc/ssh/sshd_config regexp="^PasswordAuthentication" line="PasswordAuthentication no" state=absent
+    register: password_authentication
+
+  - name: restart_ssh
+    service: name=ssh state=restarted
+    when: password_authentication.changed

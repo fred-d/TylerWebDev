@@ -1,0 +1,27 @@
+---
+- hosts: deploy
+  gather_facts: false
+  remote_user: root
+  become: yes
+  become_method: sudo
+
+  # Tasks to run before roles (misc server setup)
+  pre_tasks:
+  - name: bootstrap python
+    raw: apt-get -y install python
+
+  # Manually gather facts, because we need to run the python check before gathering facts
+  - name: gathering facts
+    setup:
+
+  roles:
+      - kamaln7.swapfile
+      - { role: common }
+      - { role: ssh_keys }
+      - { role: ssl }
+      - { role: redis }
+      - { role: harden, tcp_open: ["22", "80", "443"]}
+      - { role: nginx }
+      - { role: php }
+      - { role: geerlingguy.composer }
+      - { role: twd, tags: ["twd"] }

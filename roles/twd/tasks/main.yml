@@ -1,0 +1,23 @@
+---
+# tasks file for roles/portal
+  - name: "install twd project"
+    git: repo=git@github.com:TylerWebDev/TylerWebDev.git
+         dest=/home/deploy/twd/ansible_release
+         clone=yes
+         accept_hostkey=yes
+         version=master
+         key_file=/home/deploy/.ssh/id_rsa
+    notify:
+      - restart nginx
+
+  - name: "install env.ini config"
+    copyv: src="env.ini" dest="/home/deploy/twd/ansible_release" mode=0777
+
+  - name: "install twd project dependencies"
+    composer: command=install working_dir=/home/deploy/twd/ansible_release no_dev=yes
+
+  - name: "Ensure deploy user owns files"
+    file: path=/home/deploy/staging_files owner=www-data group=www-data recurse=yes state=directory mode=0777
+
+  - name: "symlink ansible deployment to current"
+    file: src=/home/deploy/twd/ansible_release dest=/home/deploy/twd/current state=link
